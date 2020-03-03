@@ -1146,6 +1146,7 @@ class ModelPipeline:
         klass.train_result_ = fut
 
         # Set prediction template corresponding to training template
+        print(container)
         template_id = int(container['from_template_id'])
         ids = find_one(
             _get_template_ids_all_versions(client).values(),
