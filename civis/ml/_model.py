@@ -1147,9 +1147,18 @@ class ModelPipeline:
 
         # Set prediction template corresponding to training
         # or registration template
+        log.warning(container)
+        print(container, flush=True)
+
+        print("we are here")
+
         template_id = int(container['from_template_id'])
+        print(template_id, flush=True)
+        template_ids = _get_template_ids_all_versions(client).values()
+        print(template_ids, flush=True)
+
         ids = find_one(
-            _get_template_ids_all_versions(client).values(),
+            template_ids,
             lambda ids: ids['training'] == template_id or ids['registration'] == template_id  # noqa
         )
         p_id = ids['prediction']
